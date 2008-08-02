@@ -1,0 +1,79 @@
+BioSQL v1.0.1 Release
+=====================
+
+I am pleased to announce the release of version 1.0.1 of BioSQL, the
+second release in the Tokyo release series. The release can be
+downloaded from the following locations:
+
+http://biosql.org/DIST/biosql-1.0.1.tar.gz
+http://biosql.org/DIST/biosql-1.0.1.tar.bz2
+http://biosql.org/DIST/biosql-1.0.1.zip (has Windows-style EOL)
+
+The core BioSQL schema is a generic, extensible relational model for
+sequences, sequence features, their annotation, and ontology terms. It
+is also designed as the interoperable persistence interface between
+the Bio* projects. 
+
+This release contains 
+ - the core BioSQL schema as DDL (Data Definition Language) for the
+   following RDBMSs: MySQL, PostgreSQL, Oracle, HSQLDB, and Apache
+   Derby,
+ - migration scripts from v1.0.0 for PostgreSQL, MySQL, and Oracle,
+ - ancillary (but optional) schema files for PostgreSQL, among which
+   are scripts providing experimental support for the Bioperl and
+   possibly other language bindings to BioSQL
+ - documentation and an ERD (Entity-Relationship Diagram), and
+ - a Perl script that can pre-load (and update) a BioSQL instance with
+   the NCBI taxonomy.
+
+This version of the schema should be fully backwards compatible with
+the v1.0.0 schema for nearly all software and queries. The only change
+is relaxing the column width constraint (previously 40 chars, now 128)
+of bioentry.accession and dbxref.accession. Migration scripts are
+included for PostgreSQL, MySQL, and Oracle for those who want to
+simply upgrade their existing database.
+
+In addition, the script load_ncbi_taxonomy.pl has been fixed to no
+longer require the taxon primary key and the NCBI taxon ID to be
+identical. If you previously relied on this (documented but not
+guaranteed) behavior, you will need to adjust your respective
+software. To my knowledge, none of the Bio* language bindings should
+be affected by this change.
+
+The complete change log is listed in the file Changes, and installation
+instructions for MySQL and PostgreSQL are in the file INSTALL.
+
+Additional information regarding BioSQL, including links to language
+bindings, a roadmap to future releases and enhancements, and possible
+local optimizations is available from the BioSQL website at
+http://biosql.org.
+
+On behalf of the BioSQL developers,
+
+      Hilmar Lapp
+
+Acknowledgments
+---------------
+
+BioSQL in general and in particular this point release owes to the
+community of users and developers who provide feedback, advice, and
+ideas, and report issues on the BioSQL mailing list
+(biosql-l{at}lists.open-bio.org). Credit also goes to those who have
+helped testing, in particular Peter Cock. This project would not exist
+without their contributions and the support of other developers and
+users from the Bio* community.
+
+The 1.0.x release series is code-named Tokyo in recognition of the
+role the BioHackathon 2008 played in getting the first of the series
+(v1.0.0) out the door, and in keeping with an informal tradition held
+up since the first BioHackathon.
+
+Thank you to everyone!
+
+License
+-------
+
+BioSQL is free software: you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
